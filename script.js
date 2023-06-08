@@ -13,16 +13,26 @@ function search(str) {
 
 function searchHandler(e) {
 	// TODO
+	suggestions.innerHTML = "";
+
+	const filteredItem = fruit.filter((i) => i.toLowerCase().includes(input.value.toLowerCase()) && input.value != "");
+
+	for (i in filteredItem) {
+		let suggestItem = document.createElement("li");
+
+		suggestItem.innerHTML = (filteredItem[i]);
+		suggestions.appendChild(suggestItem);
+	}
 }
 
 function showSuggestions(results, inputVal) {
-
 	// TODO
 }
 
 function useSuggestion(e) {
 	// TODO
+	input.value = e.target.innerText;
+	suggestions.innerHTML = "";
 }
-
 input.addEventListener('keyup', searchHandler);
 suggestions.addEventListener('click', useSuggestion);
